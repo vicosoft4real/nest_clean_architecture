@@ -16,15 +16,19 @@ export class GetTodoByIdQueryHandler
   ) {}
   async execute(query: GetTodoByIdQuery): Promise<TodoResponse> {
     const { id } = query;
+
     const todo = await this.todoRepository.findById(id);
-    if (todo) return;
-    new TodoResponse(
-      todo.getId(),
-      todo.getContent(),
-      todo.getIsDone(),
-      todo.getCreatedDate(),
-      { id: todo.getCategory()?.getId(), name: todo.getCategory()?.getName() },
-    );
+    if (todo)
+      return new TodoResponse(
+        todo.getId(),
+        todo.getContent(),
+        todo.getIsDone(),
+        todo.getCreatedDate(),
+        {
+          id: todo.getCategory()?.getId(),
+          name: todo.getCategory()?.getName(),
+        },
+      );
     return null;
   }
 }

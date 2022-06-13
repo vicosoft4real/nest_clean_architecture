@@ -1,3 +1,4 @@
+import { CategoryTodoPresenter } from './../../presenter/categoryTodoPresenter';
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CategoryPresenter } from 'src/api/presenter/categoryPresenter';
@@ -8,11 +9,13 @@ import { CategoryResponse } from 'src/usecase/category/query/getAllCategory/cate
 import { ApiExtraModels, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { MessagePresenter } from 'src/api/presenter/messagePresenter';
 import { ApiResponseType } from 'src/api/common/apiResponseDecorator';
+import { GetCategoryWithTodoQuery } from 'src/usecase/category/query/getCategoryWithTodo/getCategoryWithTodoQuery';
+import { CategoryTodoResponse } from 'src/usecase/category/query/getCategoryWithTodo/CategoryTodoResponse';
 
 @Controller('category')
 @ApiTags('category')
 @ApiResponse({ status: 500, description: 'Internal error' })
-@ApiExtraModels(CategoryPresenter)
+@ApiExtraModels(CategoryPresenter, MessagePresenter, CategoryTodoPresenter)
 export class CategoryController {
   constructor(
     private readonly commandBus: CommandBus,
@@ -27,6 +30,15 @@ export class CategoryController {
       CategoryResponse[]
     >(new GetAllCategoryQuery());
     return categories?.map((category) => new CategoryPresenter(category));
+  }
+  @Get('todo')
+  @ApiResponseType(CategoryTodoPresenter, true)
+  async getCategoryTodo() {
+    const categories = await this.queryBus.execute<
+      GetCategoryWithTodoQuery,
+      CategoryTodoResponse[]
+    >(new GetCategoryWithTodoQuery());
+    return categories?.map((category) => new CategoryTodoPresenter(category));
   }
 
   @Post()

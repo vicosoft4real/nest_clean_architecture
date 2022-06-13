@@ -13,6 +13,13 @@ export class CategoryRepository implements ICategoryRepsoitory {
     @InjectRepository(Category)
     private readonly categoryRepo: Repository<Category>,
   ) {}
+  async getAllWithTodo(): Promise<TodoCategory[]> {
+    const query = await this.categoryRepo
+      .createQueryBuilder('category')
+      .leftJoinAndSelect('category.todo', 'todo')
+      .getMany();
+    return query.map((q) => this.toModel(q));
+  }
   async getAll(): Promise<TodoCategory[]> {
     const category = await this.categoryRepo.find({
       select: ['id', 'name'],
@@ -46,7 +53,8 @@ export class CategoryRepository implements ICategoryRepsoitory {
                 new TodoTask(
                   x.content,
                   x.isDone,
-                  new TodoCategory(x.category.name, x.id),
+                  // new TodoCategory(x.category.name, x.id),
+                  null,
                   x.id,
                   x.createdate,
                   x.updateddate,

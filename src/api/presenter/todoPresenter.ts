@@ -17,10 +17,10 @@ export class TodoPresenter {
   category: CategoryDto;
 
   constructor(todo: TodoResponse) {
-    this.id = todo.id;
-    this.content = todo.content;
-    this.isDone = todo.isDone;
-    this.createdate = todo.createdDate;
-    this.category = todo.category;
+    this.id = todo?.id;
+    this.content = todo?.content;
+    this.isDone = todo?.isDone;
+    this.createdate = todo?.createdDate;
+    this.category = todo?.category;
   }
 }

@@ -6,4 +6,5 @@ export interface ICategoryRepsoitory {
   remove(id: number): Promise<void>;
   getById(id: number): Promise<TodoCategory>;
   getAll(): Promise<TodoCategory[]>;
+  getAllWithTodo(): Promise<TodoCategory[]>;
 }

@@ -7,6 +7,8 @@ export class CategoryPresenter {
   id: number;
   @ApiProperty()
   name: string;
+  @ApiProperty()
+  todo: TodoCategory[];
   constructor(category: CategoryResponse) {
     this.id = category.id;
     this.name = category.name;

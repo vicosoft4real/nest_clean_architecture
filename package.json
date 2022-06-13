@@ -7,10 +7,12 @@
   "license": "UNLICENSED",
   "scripts": {
     "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js",
+
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "docker-compose up --build --force-recreat",
+    "start": "nest start",
+    "start:docker":"docker-compose up --build --force-recreat",
     "start:dev": "nest start --watch",
     "start:debug": "yarn run db:dev:up && NODE_ENV=local nest start --debug --watch",
     "start:prod": "node dist/src/main",
