@@ -7,11 +7,10 @@
   "license": "UNLICENSED",
   "scripts": {
     "typeorm": "node -r tsconfig-paths/register -r ts-node/register ./node_modules/typeorm/cli.js",
-    "db:dev:up": "docker compose up dev-db -d",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
+    "start": "docker-compose up --build --force-recreat",
     "start:dev": "nest start --watch",
     "start:debug": "yarn run db:dev:up && NODE_ENV=local nest start --debug --watch",
     "start:prod": "node dist/src/main",
@@ -20,7 +19,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "compodoc": "npx compodoc -p tsconfig.doc.json"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
@@ -41,6 +41,7 @@
     "typeorm": "^0.3.6"
   },
   "devDependencies": {
+    "@compodoc/compodoc": "^1.1.19",
     "@nestjs/cli": "^8.0.0",
     "@nestjs/schematics": "^8.0.0",
     "@nestjs/testing": "^8.0.0",
