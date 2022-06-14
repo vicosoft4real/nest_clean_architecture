@@ -511,7 +511,7 @@ import { TodoResponse } from &#x27;src/usecase/todo/query/getTodoResponse&#x27;;
 @Controller(&#x27;todo&#x27;)
 @ApiTags(&#x27;todo&#x27;)
 @ApiResponse({ status: 500, description: &#x27;Internal error&#x27; })
-@ApiExtraModels(TodoPresenter)
+@ApiExtraModels(TodoPresenter, MessagePresenter)
 export class TodoController {
   constructor(
     private readonly commandBus: CommandBus,

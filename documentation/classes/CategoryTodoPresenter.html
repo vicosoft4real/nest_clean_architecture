@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >GetTodoByIdQueryHandler</li>
+  <li >CategoryTodoPresenter</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,40 +62,39 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts</code>
+            <code>src/api/presenter/categoryTodoPresenter.ts</code>
         </p>
 
 
 
 
-            <p class="comment">
-                <h3>Implements</h3>
-            </p>
-            <p class="comment">
-                        <code>IQueryHandler</code>
-            </p>
 
 
             <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-
                 <tr>
                     <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
+                        <h6><b>Properties</b></h6>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#execute" >execute</a>
+                                <a href="#id" >id</a>
+                            </li>
+                            <li>
+                                <a href="#name" >name</a>
+                            </li>
+                            <li>
+                                <a href="#todo" >todo</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
+
 
 
 
@@ -111,12 +110,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(todoRepository: <a href="../injectables/TodoRepository.html" target="_self">ITodoRepository</a>)</code>
+<code>constructor(category: <a href="../classes/CategoryTodoResponse.html" target="_self">CategoryTodoResponse</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/api/presenter/categoryTodoPresenter.ts:11</a></div>
                             </td>
                         </tr>
 
@@ -134,10 +133,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>todoRepository</td>
+                                                        <td>category</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/TodoRepository.html" target="_self" >ITodoRepository</a></code>
+                                                                        <code><a href="../classes/CategoryTodoResponse.html" target="_self" >CategoryTodoResponse</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -154,84 +153,119 @@
         </table>
 </section>
 
-
             <section>
     
-    <h3 id="methods">
-        Methods
+    <h3 id="inputs">
+        Properties
     </h3>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="execute"></a>
+                    <a name="id"></a>
                     <span class="name">
-                        <span class="modifier">Async</span>
-                        <span ><b>execute</b></span>
-                        <a href="#execute"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>id</b></span>
+                        <a href="#id"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/api/presenter/categoryTodoPresenter.ts:7</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>execute(query: <a href="../classes/GetTodoByIdQuery.html" target="_self">GetTodoByIdQuery</a>)</code>
+                    <a name="name"></a>
+                    <span class="name">
+                        <span ><b>name</b></span>
+                        <a href="#name"><span class="icon ion-ios-link"></span></a>
+                    </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/api/presenter/categoryTodoPresenter.ts:9</a></div>
+                        </td>
+                    </tr>
 
 
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts:17</a></div>
+                    <a name="todo"></a>
+                    <span class="name">
+                        <span ><b>todo</b></span>
+                        <a href="#todo"><span class="icon ion-ios-link"></span></a>
+                    </span>
                 </td>
             </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/TodoPresenter.html" target="_self" >TodoPresenter[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ApiProperty()<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/api/presenter/categoryTodoPresenter.ts:11</a></div>
+                        </td>
+                    </tr>
 
 
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Parameters :</b>
-                        
-                        <table class="params">
-                            <thead>
-                                <tr>
-                                    <td>Name</td>
-                                    <td>Type</td>
-                                    <td>Optional</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>query</td>
-                                    <td>
-                                                <code><a href="../classes/GetTodoByIdQuery.html" target="_self" >GetTodoByIdQuery</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                    </div>
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TodoResponse.html" target="_self" >Promise&lt;TodoResponse&gt;</a></code>
-
-                    </div>
-                    <div class="io-description">
-                        
-                    </div>
-                </td>
-            </tr>
         </tbody>
     </table>
 </section>
+
+
 
 
 
@@ -241,38 +275,21 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject } from &#x27;@nestjs/common&#x27;;
-import { IQueryHandler, QueryHandler } from &#x27;@nestjs/cqrs&#x27;;
-import {
-  ITodoRepository,
-  ITODO_REPOSITORY,
-} from &#x27;src/domain/interface/repository/ITodoRepository&#x27;;
-import { TodoResponse } from &#x27;../getTodoResponse&#x27;;
-import { GetTodoByIdQuery } from &#x27;./getTodoByIdQuery&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { ApiProperty } from &#x27;@nestjs/swagger&#x27;;
+import { CategoryTodoResponse } from &#x27;src/usecase/category/query/getCategoryWithTodo/CategoryTodoResponse&#x27;;
+import { TodoPresenter } from &#x27;./todoPresenter&#x27;;
 
-@QueryHandler(GetTodoByIdQuery)
-export class GetTodoByIdQueryHandler
-  implements IQueryHandler&lt;GetTodoByIdQuery, TodoResponse&gt;
-{
-  constructor(
-    @Inject(ITODO_REPOSITORY) private readonly todoRepository: ITodoRepository,
-  ) {}
-  async execute(query: GetTodoByIdQuery): Promise&lt;TodoResponse&gt; {
-    const { id } &#x3D; query;
-
-    const todo &#x3D; await this.todoRepository.findById(id);
-    if (todo)
-      return new TodoResponse(
-        todo.getId(),
-        todo.getContent(),
-        todo.getIsDone(),
-        todo.getCreatedDate(),
-        {
-          id: todo.getCategory()?.getId(),
-          name: todo.getCategory()?.getName(),
-        },
-      );
-    return null;
+export class CategoryTodoPresenter {
+  @ApiProperty()
+  id: number;
+  @ApiProperty()
+  name: string;
+  @ApiProperty()
+  todo: TodoPresenter[];
+  constructor(category: CategoryTodoResponse) {
+    this.id &#x3D; category.id;
+    this.name &#x3D; category.name;
+    this.todo &#x3D; category.todos?.map((todo) &#x3D;&gt; new TodoPresenter(todo));
   }
 }
 </code></pre>
@@ -313,7 +330,7 @@ export class GetTodoByIdQueryHandler
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'GetTodoByIdQueryHandler.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'CategoryTodoPresenter.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

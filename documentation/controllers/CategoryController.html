@@ -91,6 +91,10 @@
                                     <span class="modifier">Async</span>
                                 <a href="#getCategories" >getCategories</a>
                             </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#getCategoryTodo" >getCategoryTodo</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -137,8 +141,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/api/controller/category/category.controller.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="46"
+                            class="link-to-prism">src/api/controller/category/category.controller.ts:46</a></div>
                 </td>
             </tr>
 
@@ -215,8 +219,54 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/api/controller/category/category.controller.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/api/controller/category/category.controller.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>unknown</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCategoryTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getCategoryTodo</b></span>
+                        <a href="#getCategoryTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getCategoryTodo()</code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <b>Decorators : </b>
+                    <br />
+                    <code>@Get(&#x27;todo&#x27;)<br />@ApiResponseType(CategoryTodoPresenter, undefined)<br /></code>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/api/controller/category/category.controller.ts:36</a></div>
                 </td>
             </tr>
 
@@ -236,9 +286,9 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Body, Controller, Get, Post } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CategoryTodoPresenter } from &#x27;./../../presenter/categoryTodoPresenter&#x27;;
+import { Body, Controller, Get, Post } from &#x27;@nestjs/common&#x27;;
 import { CommandBus, QueryBus } from &#x27;@nestjs/cqrs&#x27;;
-import { ApiResponseType } from &#x27;src/api/common/apiResponseDecorator&#x27;;
 import { CategoryPresenter } from &#x27;src/api/presenter/categoryPresenter&#x27;;
 import { GetAllCategoryQuery } from &#x27;src/usecase/category/query/getAllCategory/getAllCategoryQuery&#x27;;
 import { AddCategoryDto } from &#x27;src/api/dto/addCategoryDto&#x27;;
@@ -246,11 +296,14 @@ import { AddCategoryCommand } from &#x27;src/usecase/category/command/addCategor
 import { CategoryResponse } from &#x27;src/usecase/category/query/getAllCategory/categoryResponse&#x27;;
 import { ApiExtraModels, ApiResponse, ApiTags } from &#x27;@nestjs/swagger&#x27;;
 import { MessagePresenter } from &#x27;src/api/presenter/messagePresenter&#x27;;
+import { ApiResponseType } from &#x27;src/api/common/apiResponseDecorator&#x27;;
+import { GetCategoryWithTodoQuery } from &#x27;src/usecase/category/query/getCategoryWithTodo/getCategoryWithTodoQuery&#x27;;
+import { CategoryTodoResponse } from &#x27;src/usecase/category/query/getCategoryWithTodo/CategoryTodoResponse&#x27;;
 
 @Controller(&#x27;category&#x27;)
 @ApiTags(&#x27;category&#x27;)
 @ApiResponse({ status: 500, description: &#x27;Internal error&#x27; })
-@ApiExtraModels(CategoryPresenter)
+@ApiExtraModels(CategoryPresenter, MessagePresenter, CategoryTodoPresenter)
 export class CategoryController {
   constructor(
     private readonly commandBus: CommandBus,
@@ -265,6 +318,15 @@ export class CategoryController {
       CategoryResponse[]
     &gt;(new GetAllCategoryQuery());
     return categories?.map((category) &#x3D;&gt; new CategoryPresenter(category));
+  }
+  @Get(&#x27;todo&#x27;)
+  @ApiResponseType(CategoryTodoPresenter, true)
+  async getCategoryTodo() {
+    const categories &#x3D; await this.queryBus.execute&lt;
+      GetCategoryWithTodoQuery,
+      CategoryTodoResponse[]
+    &gt;(new GetCategoryWithTodoQuery());
+    return categories?.map((category) &#x3D;&gt; new CategoryTodoPresenter(category));
   }
 
   @Post()

@@ -59,13 +59,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/ApiModule.html" data-type="entity-link" >ApiModule</a>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#controllers-links-module-ApiModule-0dca4248cabf3a6f9c99260baed9fa936173b00e8f658fd8a8b499a9e28a6d38d6155f30d2bed3cb505eb9da6bf8db067b793d5a9512898856375cfb4796dd6d"' : 'data-target="#xs-controllers-links-module-ApiModule-0dca4248cabf3a6f9c99260baed9fa936173b00e8f658fd8a8b499a9e28a6d38d6155f30d2bed3cb505eb9da6bf8db067b793d5a9512898856375cfb4796dd6d"' }>
+                                            'data-target="#controllers-links-module-ApiModule-414d22d0cb89f862250049b343e1e053928488b114bc98f4a2fcfc43535697275b9179382feb89dfcaf12f7d472952bb8798584ab8eefd26001be9b4b5d335bd"' : 'data-target="#xs-controllers-links-module-ApiModule-414d22d0cb89f862250049b343e1e053928488b114bc98f4a2fcfc43535697275b9179382feb89dfcaf12f7d472952bb8798584ab8eefd26001be9b4b5d335bd"' }>
                                             <span class="icon ion-md-swap"></span>
                                             <span>Controllers</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ApiModule-0dca4248cabf3a6f9c99260baed9fa936173b00e8f658fd8a8b499a9e28a6d38d6155f30d2bed3cb505eb9da6bf8db067b793d5a9512898856375cfb4796dd6d"' :
-                                            'id="xs-controllers-links-module-ApiModule-0dca4248cabf3a6f9c99260baed9fa936173b00e8f658fd8a8b499a9e28a6d38d6155f30d2bed3cb505eb9da6bf8db067b793d5a9512898856375cfb4796dd6d"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="controllers-links-module-ApiModule-414d22d0cb89f862250049b343e1e053928488b114bc98f4a2fcfc43535697275b9179382feb89dfcaf12f7d472952bb8798584ab8eefd26001be9b4b5d335bd"' :
+                                            'id="xs-controllers-links-module-ApiModule-414d22d0cb89f862250049b343e1e053928488b114bc98f4a2fcfc43535697275b9179382feb89dfcaf12f7d472952bb8798584ab8eefd26001be9b4b5d335bd"' }>
                                             <li class="link">
                                                 <a href="controllers/CategoryController.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >CategoryController</a>
                                             </li>
@@ -164,6 +164,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="classes/CategoryResponse.html" data-type="entity-link" >CategoryResponse</a>
                             </li>
                             <li class="link">
+                                <a href="classes/CategoryTodoPresenter.html" data-type="entity-link" >CategoryTodoPresenter</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/CategoryTodoResponse.html" data-type="entity-link" >CategoryTodoResponse</a>
+                            </li>
+                            <li class="link">
                                 <a href="classes/DeleteTodoCommand.html" data-type="entity-link" >DeleteTodoCommand</a>
                             </li>
                             <li class="link">
@@ -180,6 +186,12 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/GetAllTodoQueryHandler.html" data-type="entity-link" >GetAllTodoQueryHandler</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/GetCategoryWithTodoQuery.html" data-type="entity-link" >GetCategoryWithTodoQuery</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/GetCategoryWithTodoQueryHandler.html" data-type="entity-link" >GetCategoryWithTodoQueryHandler</a>
                             </li>
                             <li class="link">
                                 <a href="classes/GetTodoByIdQuery.html" data-type="entity-link" >GetTodoByIdQuery</a>

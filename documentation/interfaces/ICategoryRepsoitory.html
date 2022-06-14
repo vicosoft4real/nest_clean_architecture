@@ -90,6 +90,12 @@
                                     </a>
                                 </li>
                                 <li>
+                                    <a href="#getAllWithTodo" 
+>
+                                        getAllWithTodo
+                                    </a>
+                                </li>
+                                <li>
                                     <a href="#getById" 
 >
                                         getById
@@ -145,17 +151,70 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="8"
-                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:8</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get all category</p>
+</div>
 
+                    <div>
+                    </div>
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="../classes/TodoCategory.html" target="_self" >Promise&lt;TodoCategory[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Promise&lt;TodoCategory[]&gt;</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllWithTodo"></a>
+                    <span class="name">
+                        <span ><b>getAllWithTodo</b></span>
+                        <a href="#getAllWithTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllWithTodo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="36"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:36</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get all category with todo</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/TodoCategory.html" target="_self" >Promise&lt;TodoCategory[]&gt;</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>Promise&lt;TodoCategory[]&gt;</p>
 
                     </div>
                 </td>
@@ -182,14 +241,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="7"
-                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:7</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="26"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:26</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Get category by id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -200,6 +261,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -214,6 +276,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>: number</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -251,8 +317,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="4"
-                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:4</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="9"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:9</a></div>
                 </td>
             </tr>
 
@@ -269,6 +335,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -283,6 +350,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>: string</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -294,7 +365,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Promise<TodoCategory></p>
+
                     </div>
                 </td>
             </tr>
@@ -320,14 +392,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="5"
-                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:5</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="15"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:15</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>create new category</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -338,6 +412,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -352,6 +427,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>: TodoCategory</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -363,7 +442,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Promise<void></p>
+
                     </div>
                 </td>
             </tr>
@@ -389,14 +469,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="6"
-                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:6</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/domain/interface/repository/ICategoryRepository.ts:21</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Delete category by id</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -407,6 +489,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -421,6 +504,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>: number</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -432,7 +519,8 @@
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>Promise<void></p>
+
                     </div>
                 </td>
             </tr>
@@ -447,11 +535,39 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { TodoCategory } from &#x27;src/domain/model/TodoCategory&#x27;;
 export const ICATEGORY_REPOSITORY &#x3D; &#x27;ICategoryRepsoitory&#x27;;
 export interface ICategoryRepsoitory {
+  /**
+   *
+   * @param name : string
+   * @returns Promise&lt;TodoCategory&gt;
+   */
   getByName(name: string): Promise&lt;TodoCategory&gt;;
+  /**
+   * create new category
+   * @param category : TodoCategory
+   * @returns Promise&lt;void&gt;
+   */
   insert(category: TodoCategory): Promise&lt;void&gt;;
+  /**
+   * Delete category by id
+   * @param id : number
+   * @returns Promise&lt;void&gt;
+   */
   remove(id: number): Promise&lt;void&gt;;
+  /**
+   * Get category by id
+   * @param id : number
+   */
   getById(id: number): Promise&lt;TodoCategory&gt;;
+  /**
+   * Get all category
+   * @returns Promise&lt;TodoCategory[]&gt;
+   */
   getAll(): Promise&lt;TodoCategory[]&gt;;
+  /**
+   * Get all category with todo
+   * @returns Promise&lt;TodoCategory[]&gt;
+   */
+  getAllWithTodo(): Promise&lt;TodoCategory[]&gt;;
 }
 </code></pre>
     </div>

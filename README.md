@@ -49,3 +49,11 @@ http://localhost:8080/api/
 $ npm run test
 
 ```
+
+## Documentation
+
+To generate new document, run the script below
+
+```
+yarn run compodoc
+```

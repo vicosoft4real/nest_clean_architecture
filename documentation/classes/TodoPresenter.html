@@ -408,11 +408,11 @@ export class TodoPresenter {
   category: CategoryDto;
 
   constructor(todo: TodoResponse) {
-    this.id &#x3D; todo.id;
-    this.content &#x3D; todo.content;
-    this.isDone &#x3D; todo.isDone;
-    this.createdate &#x3D; todo.createdDate;
-    this.category &#x3D; todo.category;
+    this.id &#x3D; todo?.id;
+    this.content &#x3D; todo?.content;
+    this.isDone &#x3D; todo?.isDone;
+    this.createdate &#x3D; todo?.createdDate;
+    this.category &#x3D; todo?.category;
   }
 }
 </code></pre>

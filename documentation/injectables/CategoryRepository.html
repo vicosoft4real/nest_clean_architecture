@@ -84,6 +84,10 @@
                             </li>
                             <li>
                                     <span class="modifier">Async</span>
+                                <a href="#getAllWithTodo" >getAllWithTodo</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
                                 <a href="#getById" >getById</a>
                             </li>
                             <li>
@@ -194,6 +198,45 @@
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../classes/TodoCategory.html" target="_self" >Promise&lt;TodoCategory[]&gt;</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllWithTodo"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>getAllWithTodo</b></span>
+                        <a href="#getAllWithTodo"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getAllWithTodo()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
                     <div class="io-line">Defined in <a href="" data-line="16"
                             class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:16</a></div>
                 </td>
@@ -233,8 +276,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="23"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:23</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="30"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:30</a></div>
                 </td>
             </tr>
 
@@ -304,8 +347,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="27"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:27</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:34</a></div>
                 </td>
             </tr>
 
@@ -375,8 +418,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="31"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:31</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:38</a></div>
                 </td>
             </tr>
 
@@ -446,8 +489,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:42</a></div>
                 </td>
             </tr>
 
@@ -517,8 +560,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="61"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:61</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:69</a></div>
                 </td>
             </tr>
 
@@ -588,8 +631,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="45"
+                            class="link-to-prism">src/infrastructure/repositories/category.repossitory.ts:45</a></div>
                 </td>
             </tr>
 
@@ -658,6 +701,13 @@ export class CategoryRepository implements ICategoryRepsoitory {
     @InjectRepository(Category)
     private readonly categoryRepo: Repository&lt;Category&gt;,
   ) {}
+  async getAllWithTodo(): Promise&lt;TodoCategory[]&gt; {
+    const query &#x3D; await this.categoryRepo
+      .createQueryBuilder(&#x27;category&#x27;)
+      .leftJoinAndSelect(&#x27;category.todo&#x27;, &#x27;todo&#x27;)
+      .getMany();
+    return query.map((q) &#x3D;&gt; this.toModel(q));
+  }
   async getAll(): Promise&lt;TodoCategory[]&gt; {
     const category &#x3D; await this.categoryRepo.find({
       select: [&#x27;id&#x27;, &#x27;name&#x27;],
@@ -691,7 +741,8 @@ export class CategoryRepository implements ICategoryRepsoitory {
                 new TodoTask(
                   x.content,
                   x.isDone,
-                  new TodoCategory(x.category.name, x.id),
+                  // new TodoCategory(x.category.name, x.id),
+                  null,
                   x.id,
                   x.createdate,
                   x.updateddate,

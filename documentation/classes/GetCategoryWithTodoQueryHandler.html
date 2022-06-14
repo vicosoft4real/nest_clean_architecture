@@ -44,7 +44,7 @@
 
 <ol class="breadcrumb">
   <li>Classes</li>
-  <li >GetTodoByIdQueryHandler</li>
+  <li >GetCategoryWithTodoQueryHandler</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -62,7 +62,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts</code>
+            <code>src/usecase/category/query/getCategoryWithTodo/getCategoryWithTodoQueryHandler.ts</code>
         </p>
 
 
@@ -111,12 +111,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(todoRepository: <a href="../injectables/TodoRepository.html" target="_self">ITodoRepository</a>)</code>
+<code>constructor(todoRepository: <a href="../interfaces/ICategoryRepsoitory.html" target="_self">ICategoryRepsoitory</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/usecase/category/query/getCategoryWithTodo/getCategoryWithTodoQueryHandler.ts:14</a></div>
                             </td>
                         </tr>
 
@@ -137,7 +137,7 @@
                                                         <td>todoRepository</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/TodoRepository.html" target="_self" >ITodoRepository</a></code>
+                                                                        <code><a href="../interfaces/ICategoryRepsoitory.html" target="_self" >ICategoryRepsoitory</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -175,15 +175,15 @@
             <tr>
                 <td class="col-md-4">
                     <span class="modifier-icon icon ion-ios-reset"></span>
-                    <code>execute(query: <a href="../classes/GetTodoByIdQuery.html" target="_self">GetTodoByIdQuery</a>)</code>
+                    <code>execute(_query: <a href="../classes/GetCategoryWithTodoQuery.html" target="_self">GetCategoryWithTodoQuery</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="17"
-                            class="link-to-prism">src/usecase/todo/query/getAllTodoById/getTodoByIdQueryHandler.ts:17</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="19"
+                            class="link-to-prism">src/usecase/category/query/getCategoryWithTodo/getCategoryWithTodoQueryHandler.ts:19</a></div>
                 </td>
             </tr>
 
@@ -204,9 +204,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>query</td>
+                                    <td>_query</td>
                                     <td>
-                                                <code><a href="../classes/GetTodoByIdQuery.html" target="_self" >GetTodoByIdQuery</a></code>
+                                                <code><a href="../classes/GetCategoryWithTodoQuery.html" target="_self" >GetCategoryWithTodoQuery</a></code>
                                     </td>
 
                                     <td>
@@ -221,7 +221,7 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="../classes/TodoResponse.html" target="_self" >Promise&lt;TodoResponse&gt;</a></code>
+                        <b>Returns : </b>    <code>Promise&lt;CategoryTodoResponse[]&gt;</code>
 
                     </div>
                     <div class="io-description">
@@ -241,38 +241,47 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Inject } from &#x27;@nestjs/common&#x27;;
-import { IQueryHandler, QueryHandler } from &#x27;@nestjs/cqrs&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { TodoResponse } from &#x27;src/usecase/todo/query/getTodoResponse&#x27;;
 import {
-  ITodoRepository,
-  ITODO_REPOSITORY,
-} from &#x27;src/domain/interface/repository/ITodoRepository&#x27;;
-import { TodoResponse } from &#x27;../getTodoResponse&#x27;;
-import { GetTodoByIdQuery } from &#x27;./getTodoByIdQuery&#x27;;
+  ICATEGORY_REPOSITORY,
+  ICategoryRepsoitory,
+} from &#x27;src/domain/interface/repository/ICategoryRepository&#x27;;
+import { IQueryHandler, QueryHandler } from &#x27;@nestjs/cqrs&#x27;;
+import { CategoryTodoResponse } from &#x27;./CategoryTodoResponse&#x27;;
+import { GetCategoryWithTodoQuery } from &#x27;./getCategoryWithTodoQuery&#x27;;
+import { Inject } from &#x27;@nestjs/common&#x27;;
 
-@QueryHandler(GetTodoByIdQuery)
-export class GetTodoByIdQueryHandler
-  implements IQueryHandler&lt;GetTodoByIdQuery, TodoResponse&gt;
+@QueryHandler(GetCategoryWithTodoQuery)
+export class GetCategoryWithTodoQueryHandler
+  implements IQueryHandler&lt;GetCategoryWithTodoQuery, CategoryTodoResponse[]&gt;
 {
   constructor(
-    @Inject(ITODO_REPOSITORY) private readonly todoRepository: ITodoRepository,
+    @Inject(ICATEGORY_REPOSITORY)
+    private readonly todoRepository: ICategoryRepsoitory,
   ) {}
-  async execute(query: GetTodoByIdQuery): Promise&lt;TodoResponse&gt; {
-    const { id } &#x3D; query;
-
-    const todo &#x3D; await this.todoRepository.findById(id);
-    if (todo)
-      return new TodoResponse(
-        todo.getId(),
-        todo.getContent(),
-        todo.getIsDone(),
-        todo.getCreatedDate(),
-        {
-          id: todo.getCategory()?.getId(),
-          name: todo.getCategory()?.getName(),
-        },
-      );
-    return null;
+  async execute(
+    _query: GetCategoryWithTodoQuery,
+  ): Promise&lt;CategoryTodoResponse[]&gt; {
+    const category &#x3D; await this.todoRepository.getAllWithTodo();
+    const response &#x3D; category?.map(
+      (_q) &#x3D;&gt;
+        new CategoryTodoResponse(
+          _q.getId(),
+          _q.getName(),
+          _q
+            .getTodo()
+            ?.map(
+              (t) &#x3D;&gt;
+                new TodoResponse(
+                  t.getId(),
+                  t.getContent(),
+                  t.getIsDone(),
+                  t.getCreatedDate(),
+                ),
+            ),
+        ),
+    );
+    return response;
   }
 }
 </code></pre>
@@ -313,7 +322,7 @@ export class GetTodoByIdQueryHandler
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'GetTodoByIdQueryHandler.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'GetCategoryWithTodoQueryHandler.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 
