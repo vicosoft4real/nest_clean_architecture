@@ -38,7 +38,7 @@ At the root run the following command.
 ```bash
 # Docker compose
 $ yarn run start:docker
-# click the url below after succesful deployment
+# Goto the url below after succesful deployment
 http://localhost:8080/api/
 ```
 
